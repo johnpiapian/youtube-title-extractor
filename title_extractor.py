@@ -1,11 +1,7 @@
-import configparser
+import os
 from googleapiclient.discovery import build
 
-# Handling config file
-config = configparser.ConfigParser()
-config.read('config.ini')
-
-api_key = config['DEFAULT']['api_key']
+api_key = os.environ.get('youtube_api_key')
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 vid_titles = []
