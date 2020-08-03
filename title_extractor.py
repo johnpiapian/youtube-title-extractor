@@ -4,6 +4,7 @@ from googleapiclient.discovery import build
 # API Secret key
 api_key = os.environ.get('YOUTUBE_API')
 
+# API connection
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 
@@ -33,6 +34,7 @@ def getTitles(pl_ID):
             part='snippet',
             id=','.join(vid_ids)
         )
+        
         v_response = v_request.execute()
 
         for item in v_response['items']:
