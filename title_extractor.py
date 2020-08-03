@@ -1,7 +1,8 @@
 import os
 from googleapiclient.discovery import build
 
-api_key = os.environ.get('youtube_api_key')
+api_key = os.environ.get('YOUTUBE_API')
+
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 vid_titles = []

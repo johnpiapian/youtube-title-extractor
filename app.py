@@ -16,7 +16,7 @@ worksheet.write('A1', 'Video Titles', cell_format)
 row = 1
 max_width = 0
 
-for title in title.vid_titles:
+for title in title_extractor.vid_titles:
     worksheet.write(row, 0, title)
 
     if len(title) > max_width:
