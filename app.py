@@ -1,3 +1,4 @@
+import sys
 import title_extractor
 import xlsxwriter
 
@@ -32,4 +33,26 @@ def createSpreadsheet(name, pl_id):
     # Conclude the file
     workbook.close()
 
-createSpreadsheet('titles', 'PL8ATzBSyrJZxzU9yP_XlJoGIopvo_jivu')
+def app():
+    # 1st: filename, 2nd: playlist_id, 3rd: spreadsheet's name
+    arguments = sys.argv
+    playlist_id = None
+    spreadsheet_name = None
+
+    # if empty give spreadsheet a default name
+    if len(arguments) == 2:
+        arguments.append("titles")
+
+    if len(arguments) >= 3:
+        playlist_id = arguments[1]
+        spreadsheet_name = arguments[2]
+
+        try:
+            createSpreadsheet(spreadsheet_name, playlist_id)
+        except:
+            print("An unexpected error occured!")
+    else:
+        print("Invalid input!")  
+
+      
+app()
