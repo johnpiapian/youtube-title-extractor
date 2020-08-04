@@ -4,7 +4,7 @@ Extract video titles from a youtube playlist and export the data into a spreadsh
 # Usage
 app.py [playlist_id] [spreadsheetsName]
 
-# example
+> Example
 app.py PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj video_titles
 
 
