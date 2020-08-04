@@ -7,6 +7,7 @@ app.py [playlist_id] [spreadsheetsName]
 > app.py PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj video_titles
 
 
-If the 2nd argument[spreadsheet's name] is left empty it will be set to a default name. 
 
+If the 2nd argument[spreadsheet's name] is left empty it will be set to a default name. 
+<br/>
 **Do not include the extension name when setting a name for the spreadsheet file.
