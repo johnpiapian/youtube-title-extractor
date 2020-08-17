@@ -1,4 +1,4 @@
-# youtube-video-title-extractor
+# youtube-title-extractor
 Extract video titles from a youtube playlist and export the data into a spreadsheet file. 
 
 <br/>
