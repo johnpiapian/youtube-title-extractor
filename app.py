@@ -1,9 +1,8 @@
 import sys
-import title_extractor
 import xlsxwriter
+import extract_title
 
 def createSpreadsheet(name, pl_id):
-
     workbook = xlsxwriter.Workbook(fr'{name}.xlsx')
     worksheet = workbook.add_worksheet()
 
@@ -20,7 +19,8 @@ def createSpreadsheet(name, pl_id):
     # Add cell title
     worksheet.write('A1', 'Video Titles', cell_format)
     
-    titles = title_extractor.getTitles(pl_id)
+    # get titles using the improted module
+    titles = extract_title.getTitles(pl_id)
 
     row = 1
     for title in titles:

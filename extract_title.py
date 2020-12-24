@@ -8,7 +8,7 @@ api_key = os.environ.get('YOUTUBE_API')
 youtube = build('youtube', 'v3', developerKey=api_key)
 
 
-def getTitles(pl_ID):
+def getTitles(playlist_id):
 
     vid_titles = []
 
@@ -17,7 +17,7 @@ def getTitles(pl_ID):
     while True:
         pl_request = youtube.playlistItems().list(
             part='contentDetails',
-            playlistId=pl_ID,
+            playlistId=playlist_id,
             maxResults=50,
             pageToken=nextPageToken
         )
