@@ -17,4 +17,4 @@ app.py [playlist_id] [filename]
 
 If the second argument[filename] is not provided, it will be set to a default name(titles.xlsx).  
 
-**Do not include the extension name when setting a name for the spreadsheet.
+**Do not include the extension name when setting a name for the file.
