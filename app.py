@@ -50,7 +50,7 @@ def app():
         try:
             createSpreadsheet(spreadsheet_name, playlist_id)
         except:
-            print("An unexpected error occured!")
+            print("An unexpected error occurred!")
     else:
         print("Invalid input!")  
 
