@@ -49,6 +49,7 @@ def app():
 
         try:
             createSpreadsheet(spreadsheet_name, playlist_id)
+            print("Successfully created!")
         except:
             print("An unexpected error occurred!")
     else:
