@@ -18,3 +18,5 @@ app.py [playlist_id] [filename]
 If the second argument[filename] is not provided, it will be set to a default name[titles.xlsx].  
 
 **Do not include the extension name when setting a name for the file.
+
+For API key create a python file called constants.py and initialize a variable called YOUTUBE_API with the value as your API key.
