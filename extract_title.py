@@ -1,8 +1,10 @@
 import os
+import constants
 from googleapiclient.discovery import build
 
 # API Secret key
-api_key = os.environ.get('YOUTUBE_API')
+# api_key = os.environ.get('YOUTUBE_API')
+api_key = constants.YOUTUBE_API
 
 # API connection
 youtube = build('youtube', 'v3', developerKey=api_key)
