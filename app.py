@@ -1,6 +1,6 @@
 import sys
-from extracttitle import ExtractTitle
-from extracttitle import SpreadSheet
+from ytextractor import ExtractTitle
+from ytextractor import SpreadSheet
 import constants
 
 def app():
