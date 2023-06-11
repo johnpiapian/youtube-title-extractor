@@ -22,8 +22,8 @@ def app():
             extract_titles = ExtractTitle(constants.YOUTUBE_API)
             titles = extract_titles.get_titles(playlist_id)
 
-            generate_spreadsheet = SpreadSheet(spreadsheet_name)
-            generate_spreadsheet.generate(titles)
+            spreadsheet = SpreadSheet(spreadsheet_name)
+            spreadsheet.generate(titles)
             print("Successfully created!")
         except:
             print("An unexpected error occurred!")
