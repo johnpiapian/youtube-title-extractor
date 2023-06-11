@@ -15,7 +15,7 @@ Extract video titles from a youtube playlist and export the data into a spreadsh
 app.py [playlist_id] [filename]
 > app.py PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj video_titles
 
-If the second argument[filename] is not provided, it will be set to a default name[titles.xlsx].  
+If the second argument(filename) is not provided, it will be set to a default name(titles.xlsx).  
 
 **Do not include the extension name when setting a name for the file.
 
