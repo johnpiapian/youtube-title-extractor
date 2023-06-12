@@ -4,32 +4,28 @@ from ytextractor import SpreadSheet
 import constants
 
 def app():
-    # 1st: filename, 2nd: playlist_id, 3rd: spreadsheet's name
+    # filename (app.py), playlist_id, spreadsheet's name
     arguments = sys.argv
-    playlist_id = None
-    spreadsheet_name = None
 
-    # if empty give spreadsheet a default name
-    if len(arguments) == 2:
+    if len(arguments) == 1:
+        arguments.append(input("Enter playlist id: "))
+        arguments.append(input("Enter spreadsheet's name: "))
+    elif len(arguments) == 2:
         arguments.append("titles")
+    
+    # Unpack arguments
+    playlist_id, spreadsheet_name = arguments[1:3]
 
-    if len(arguments) >= 3:
-        playlist_id = arguments[1]
-        spreadsheet_name = arguments[2]
+    try:
+        title_extractor = ExtractTitle(constants.YOUTUBE_API)
+        titles = title_extractor.get_titles(playlist_id)
 
-        try:
-            # createSpreadsheet(spreadsheet_name, playlist_id)
-            extract_titles = ExtractTitle(constants.YOUTUBE_API)
-            titles = extract_titles.get_titles(playlist_id)
-
-            spreadsheet = SpreadSheet(spreadsheet_name)
-            spreadsheet.generate(titles)
-            print("Successfully created!")
-        except:
-            print("An unexpected error occurred!")
-            raise
-    else:
-        print("Invalid input!")
+        spreadsheet = SpreadSheet(spreadsheet_name)
+        spreadsheet.generate(titles)
+        print("Successfully created!")
+    except:
+        print("An unexpected error occurred!")
+        raise
 
 app()
 
