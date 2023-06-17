@@ -7,7 +7,7 @@ Supported file types: xlsx, csv
 # Installation
 
 ## Setup Project
-> git clone https://github.com/johnpiapian/youtube-title-extractor\
+> git clone https://github.com/johnpiapian/youtube-title-extractor \
 > python3 -m venv virtual\
 > source virtual/bin/activate\
 > pip install google-api-python-client\
