@@ -1,6 +1,6 @@
 import sys
 from ytextractor import ExtractTitle
-from ytextractor import SpreadSheet
+from ytextractor import FileManager
 import constants
 
 def app():
@@ -20,8 +20,10 @@ def app():
         title_extractor = ExtractTitle(constants.YOUTUBE_API)
         titles = title_extractor.get_titles(playlist_id)
 
-        spreadsheet = SpreadSheet(spreadsheet_name)
-        spreadsheet.generate(titles)
+        file_manager = FileManager(spreadsheet_name, titles)
+        file_manager.generate_xlsx()
+        file_manager.generate_csv()
+
         print("Successfully created!")
     except:
         print("An unexpected error occurred!")
