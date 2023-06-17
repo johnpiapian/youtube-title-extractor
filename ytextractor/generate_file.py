@@ -1,4 +1,5 @@
 import xlsxwriter
+
 class SpreadSheet:
     def __init__(self, name):
         self.name = name
@@ -30,3 +31,25 @@ class SpreadSheet:
 
         # Conclude the file
         workbook.close()
+
+class CSV:
+    def __init__(self, name):
+        self.name = name
+
+    def generate(self, titles):
+        with open(fr'{self.name}.csv', 'w') as file:
+            for title in titles:
+                file.write(f'{title}\n')
+
+class FileManager:
+    def __init__(self, name, titles):
+        self.name = name
+        self.titles = titles
+    
+    def generate_xlsx(self):
+        spreadsheet = SpreadSheet(self.name)
+        spreadsheet.generate(self.titles)
+    
+    def generate_csv(self):
+        csv = CSV(self.name)
+        csv.generate(self.titles)

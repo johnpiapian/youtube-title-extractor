@@ -1,22 +1,32 @@
 # youtube-title-extractor
 
-Extract video titles from a youtube playlist and export the data into a spreadsheet file.
+Extract video titles from a youtube playlist and export the data into a file type of your choice. 
 
-## Installation
+Supported file types: xlsx, csv
 
-> git clone [url]\
+# Installation
+
+## Setup Project
+> git clone https://github.com/johnpiapian/youtube-title-extractor\
 > python3 -m venv virtual\
 > source virtual/bin/activate\
 > pip install google-api-python-client\
 > pip install XlsxWriter
 
-## Usage
+## Configure API
+Set YOUTUBE_API in env.txt to your own Youtube api key and then rename env.txt to env.py.
 
-app.py [playlist_id] [filename]
-> app.py PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj video_titles
+<br>
 
-If the second argument(filename) is not provided, it will be set to a default name(titles.xlsx).  
+# Usage
 
-**Do not include the extension name when setting a name for the file.
+You can interact with the console by running the app like the following:
+> python app.py
 
-For API key, create a python file called constants.py and initialize a variable called YOUTUBE_API with the value as your API key.
+Alternatively, you can pass the necessary values directly as flags.
+> python app.py [playlist_id] [filename] [filetype]
+
+For example (exclude extension from filename):
+> app.py PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj video_titles csv
+
+If file name (2nd arg) is not provided, it will be set to a default name(titles.xlsx). Similarily, if file type (3rd arg) is not provided then it will be set to .xlsx.
