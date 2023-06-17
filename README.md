@@ -29,4 +29,4 @@ Alternatively, you can pass the necessary values directly as flags:
 For example (exclude extension from filename):
 > app.py PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj video_titles csv
 
-If file name (2nd arg) is not provided, it will be set to a default name(titles.xlsx). Similarily, if file type (3rd arg) is not provided then it will be set to .xlsx.
+If file name (2nd arg) is not provided, it will be set to a default name(titles.xlsx). Similarily, if file type (3rd arg) is not provided then it will be set to xlsx.
