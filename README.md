@@ -23,7 +23,7 @@ Set YOUTUBE_API in env.txt to your own Youtube api key and then rename env.txt t
 You can interact with the console by running the app like the following:
 > python app.py
 
-Alternatively, you can pass the necessary values directly as flags.
+Alternatively, you can pass the necessary values directly as flags:
 > python app.py [playlist_id] [filename] [filetype]
 
 For example (exclude extension from filename):
