@@ -1,10 +1,11 @@
 import xlsxwriter
 
 class SpreadSheet:
-    def __init__(self, name):
+    def __init__(self, name, titles):
         self.name = name
+        self.titles = titles
 
-    def generate(self, titles):
+    def generate(self):
         workbook = xlsxwriter.Workbook(fr'{self.name}.xlsx')
         worksheet = workbook.add_worksheet()
 
@@ -22,23 +23,24 @@ class SpreadSheet:
         worksheet.write('A1', 'Video Titles', cell_format)
 
         row = 1
-        for title in titles:
+        for title in self.titles:
             worksheet.write(row, 0, title)
             row += 1
 
-        max_width = len(max(titles, key=len))
+        max_width = len(max(self.titles, key=len))
         worksheet.set_column(0, 0, max_width)
 
         # Conclude the file
         workbook.close()
 
 class CSV:
-    def __init__(self, name):
+    def __init__(self, name, titles):
         self.name = name
+        self.titles = titles
 
-    def generate(self, titles):
+    def generate(self):
         with open(fr'{self.name}.csv', 'w') as file:
-            for title in titles:
+            for title in self.titles:
                 file.write(f'{title}\n')
 
 class FileManager:
@@ -47,9 +49,9 @@ class FileManager:
         self.titles = titles
     
     def generate_xlsx(self):
-        spreadsheet = SpreadSheet(self.name)
-        spreadsheet.generate(self.titles)
+        spreadsheet = SpreadSheet(self.name, self.titles)
+        spreadsheet.generate()
     
     def generate_csv(self):
-        csv = CSV(self.name)
-        csv.generate(self.titles)
+        csv = CSV(self.name, self.titles)
+        csv.generate()

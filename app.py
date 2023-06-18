@@ -15,10 +15,10 @@ def app():
         arguments.append("titles")
         arguments.append("xlsx")
     
-    # Unpack arguments
-    playlist_id, file_name, file_type = arguments[1:4]
-
     try:
+        # Unpack arguments
+        playlist_id, file_name, file_type = arguments[1:4]
+        
         title_extractor = ExtractTitle(env.YOUTUBE_API)
         titles = title_extractor.get_titles(playlist_id)
 
