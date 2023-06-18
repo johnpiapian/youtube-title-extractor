@@ -3,7 +3,6 @@ from googleapiclient.discovery import build
 
 class ExtractTitle:
     def __init__(self, api_key):
-        self.api_key = api_key # API Secret key
         self.youtube = build('youtube', 'v3', developerKey=api_key) # API connection
 
     def get_titles(self, playlist_id):
