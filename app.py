@@ -1,5 +1,5 @@
 import sys
-from ytextractor import ExtractTitle
+from ytextractor import ExtractData
 from ytextractor import FileManager
 import env
 
@@ -19,10 +19,10 @@ def app():
         # Unpack arguments
         playlist_id, file_name, file_type = arguments[1:4]
         
-        title_extractor = ExtractTitle(env.YOUTUBE_API)
-        titles = title_extractor.get_titles(playlist_id)
+        data_extractor = ExtractData(env.YOUTUBE_API)
+        data_extractor.setup(playlist_id)
 
-        file_manager = FileManager(file_name, titles)
+        file_manager = FileManager(file_name, data_extractor.get_videos())
 
         if file_type == "xlsx":
             file_manager.generate_xlsx()

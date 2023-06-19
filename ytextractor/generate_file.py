@@ -1,9 +1,10 @@
 import xlsxwriter
+import csv
 
 class SpreadSheet:
-    def __init__(self, name, titles):
+    def __init__(self, name, videos):
         self.name = name
-        self.titles = titles
+        self.videos = videos
 
     def generate(self):
         workbook = xlsxwriter.Workbook(fr'{self.name}.xlsx')
@@ -19,39 +20,54 @@ class SpreadSheet:
         cell_format.set_align('center')
         cell_format.set_align('vcenter')
 
-        # Add cell title
-        worksheet.write('A1', 'Video Titles', cell_format)
+        # Select fields to be written
+        selected_fields = [{
+            'Title': video['title'],
+            'Url': f'https://www.youtube.com/watch?v={video["videoId"]}'
+            } for video in self.videos]
 
-        row = 1
-        for title in self.titles:
-            worksheet.write(row, 0, title)
-            row += 1
+        # Write header
+        headers = list(selected_fields[0].keys())
+        for idx, header in enumerate(headers):
+            worksheet.write(0, idx, header, cell_format)
 
-        max_width = len(max(self.titles, key=len))
-        worksheet.set_column(0, 0, max_width)
+        # Write data rows
+        for row_num, video in enumerate(selected_fields, start=1):  # start=1 to skip header row
+            for col_num, (key, value) in enumerate(video.items()):
+                worksheet.write(row_num, col_num, value)
 
         # Conclude the file
         workbook.close()
 
 class CSV:
-    def __init__(self, name, titles):
+    def __init__(self, name, videos):
         self.name = name
-        self.titles = titles
+        self.videos = videos
 
     def generate(self):
-        with open(fr'{self.name}.csv', 'w') as file:
-            for title in self.titles:
-                file.write(f'{title}\n')
+        # Select fields to be written
+        selected_fields = [{
+            'Title': video['title'], 
+            'Url': f'https://www.youtube.com/watch?v={video["videoId"]}'
+            } for video in self.videos]
+
+        with open(fr'{self.name}.csv', 'w', newline='') as file:
+            # Get fieldnames dynamically from the first dictionary in selected_fields
+            fieldnames = list(selected_fields[0].keys()) if selected_fields else []
+
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(selected_fields)
 
 class FileManager:
-    def __init__(self, name, titles):
+    def __init__(self, name, videos):
         self.name = name
-        self.titles = titles
+        self.videos = videos
     
     def generate_xlsx(self):
-        spreadsheet = SpreadSheet(self.name, self.titles)
+        spreadsheet = SpreadSheet(self.name, self.videos)
         spreadsheet.generate()
     
     def generate_csv(self):
-        csv = CSV(self.name, self.titles)
+        csv = CSV(self.name, self.videos)
         csv.generate()
