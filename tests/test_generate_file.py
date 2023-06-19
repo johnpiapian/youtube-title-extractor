@@ -36,6 +36,7 @@ class TestExtractor:
         spreadsheet.generate()
 
         assert os.path.exists(fr'{self.filename}.xlsx')
+
         os.remove(fr'{self.filename}.xlsx')
 
     def test_csv(self):
@@ -43,6 +44,7 @@ class TestExtractor:
         csv.generate()
 
         assert os.path.exists(fr'{self.filename}.csv')
+        
         os.remove(fr'{self.filename}.csv')
 
     def test_file_manager(self):
