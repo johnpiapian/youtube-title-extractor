@@ -14,6 +14,8 @@ def app():
     elif len(arguments) == 2:
         arguments.append("titles")
         arguments.append("xlsx")
+    elif len(arguments) == 3:
+        arguments.append("xlsx")
     
     try:
         # Unpack arguments
