@@ -13,6 +13,10 @@ Supported file types: xlsx, csv
 > pip install google-api-python-client\
 > pip install XlsxWriter
 
+### Alternatively use setup script
+> git clone https://github.com/johnpiapian/youtube-title-extractor \
+> ./setup.sh
+
 ## Configure API
 Set YOUTUBE_API in env.txt to your own Youtube api key and then rename env.txt to env.py.
 

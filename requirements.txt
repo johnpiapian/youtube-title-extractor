@@ -1,0 +1,2 @@
+google-api-python-client==2.80.0
+XlsxWriter==3.0.8
