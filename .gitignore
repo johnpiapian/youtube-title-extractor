@@ -2,6 +2,7 @@ venv/
 env/
 virtual/
 .vscode/
+.idea/
 __pycache__/
 
 *.ini
